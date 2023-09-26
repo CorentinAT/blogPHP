@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 26 sep. 2023 à 14:59
+-- Généré le : mar. 26 sep. 2023 à 15:44
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -30,27 +30,27 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `article`;
 CREATE TABLE IF NOT EXISTS `article` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `titre` varchar(100) NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `titre` varchar(100) COLLATE utf8mb4_bin NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `categories` int NOT NULL,
-  `pseudo` varchar(20) NOT NULL,
+  `id_user` int NOT NULL,
   `commentaires` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `catégorie`
+-- Structure de la table `categorie`
 --
 
-DROP TABLE IF EXISTS `catégorie`;
-CREATE TABLE IF NOT EXISTS `catégorie` (
+DROP TABLE IF EXISTS `categorie`;
+CREATE TABLE IF NOT EXISTS `categorie` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nom` varchar(20) NOT NULL,
+  `nom` varchar(20) COLLATE utf8mb4_bin NOT NULL,
   `articles` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- --------------------------------------------------------
 
@@ -61,10 +61,23 @@ CREATE TABLE IF NOT EXISTS `catégorie` (
 DROP TABLE IF EXISTS `commentaire`;
 CREATE TABLE IF NOT EXISTS `commentaire` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `description` text NOT NULL,
-  `article` text NOT NULL,
-  `pseudo` varchar(20) NOT NULL,
+  `description` text COLLATE utf8mb4_bin NOT NULL,
+  `article` text COLLATE utf8mb4_bin NOT NULL,
+  `id_user` int NOT NULL,
+  `id_article` int NOT NULL,
   PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `lien_categorie_article`
+--
+
+DROP TABLE IF EXISTS `lien_categorie_article`;
+CREATE TABLE IF NOT EXISTS `lien_categorie_article` (
+  `id_article` int NOT NULL,
+  `id_categorie` int NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -76,11 +89,11 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `email` text NOT NULL,
-  `mdp` varchar(50) NOT NULL,
+  `email` text COLLATE utf8mb4_bin NOT NULL,
+  `mdp` varchar(50) COLLATE utf8mb4_bin NOT NULL,
   `admin` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
