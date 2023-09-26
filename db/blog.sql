@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 26 sep. 2023 à 15:34
+-- Généré le : mar. 26 sep. 2023 à 15:44
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -64,8 +64,21 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
   `description` text COLLATE utf8mb4_bin NOT NULL,
   `article` text COLLATE utf8mb4_bin NOT NULL,
   `id_user` int NOT NULL,
+  `id_article` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `lien_categorie_article`
+--
+
+DROP TABLE IF EXISTS `lien_categorie_article`;
+CREATE TABLE IF NOT EXISTS `lien_categorie_article` (
+  `id_article` int NOT NULL,
+  `id_categorie` int NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
