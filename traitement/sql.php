@@ -25,6 +25,18 @@ function get_user_by_email($email) {
     }
 }
 
+function get_categories() {
+  require "config.php";
+  $sql = "SELECT * FROM categorie";
+  $rows = $connexion->query($sql);
+
+  if($rows) {
+    return $rows;
+  } else {
+    return false;
+  }
+}
+
 function create_user($email, $hashed_password, $admin) {
     require "config.php";
     $sql = $connexion->prepare("INSERT INTO user (email, mdp, admin) VALUES (?, ?, ?)");

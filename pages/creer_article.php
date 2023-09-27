@@ -20,10 +20,15 @@ require_once "../traitement/config.php"; ?>
         <label for="categories" class="block text-sm md:text-base font-medium text-gray-600">Catégories</label>
         <fieldset id="categories" class="flex gap-3">
           <?php
-            $sql = "SELECT * FROM categorie";
-            foreach($connexion->query($sql) as $categorie) {
-              echo "<input type='checkbox' name='categories[]' value='". $categorie['id'] ."' id='". $categorie['nom'] ."' class='hidden'/>
-              <label for='". $categorie['nom'] ."' class='border rounded-2xl p-2 select-none transition-all duration-200 flex justify-center items-center hover:bg-blue-100'>". $categorie['nom'] ."</label>";
+            require "../traitement/sql.php";
+            $categories = get_categories();
+            if($categories!==false) {
+              foreach($categories as $categorie) {
+                echo "<input type='checkbox' name='categories[]' value='". $categorie['id'] ."' id='". $categorie['nom'] ."' class='hidden'/>
+                <label for='". $categorie['nom'] ."' class='border rounded-2xl p-2 select-none transition-all duration-200 flex justify-center items-center hover:bg-blue-100'>". $categorie['nom'] ."</label>";
+              }
+            } else {
+              echo "<p>Erreur dans le chargement des catégories</p>";
             }
           ?>
         </fieldset>
