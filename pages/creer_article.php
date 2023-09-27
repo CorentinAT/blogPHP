@@ -15,6 +15,6 @@
     Article
     <textarea class="border"></textarea>
   </label>
-  <button type="submit" name="form_sql" value="nvarticle">Publier</button>
+  <button type="submit" name="form_sql" value="nvarticle" class="border">Publier</button>
 </form>
 <?php require("../structure/footer.php"); ?>
