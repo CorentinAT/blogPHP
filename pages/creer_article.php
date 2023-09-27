@@ -28,7 +28,7 @@ require_once "../traitement/config.php"; ?>
                 <label for='". $categorie['nom'] ."' class='border rounded-2xl p-2 select-none transition-all duration-200 flex justify-center items-center hover:bg-blue-100'>". $categorie['nom'] ."</label>";
               }
             } else {
-              echo "<p>Erreur dans le chargement des catégories</p>";
+              echo "<p class='text-red-500'>Erreur dans le chargement des catégories</p>";
             }
           ?>
         </fieldset>
