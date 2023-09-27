@@ -1,9 +1,5 @@
+
 <?php
-  if(empty($_POST) || empty($_POST['form_name'])) {
-    session_unset();
-    header('Location: index.php');
-    exit();
-  }
 
   function nvarticle($titre, $description, $categories, $id_user) {
     $sql = $connexion->prepare("INSERT INTO article (titre, description, id_user) VALUES (?, ?, ?)");
@@ -16,8 +12,24 @@
     }
   }
 
-  switch($_POST['form_sql']) {
-    case "nvarticle":
-      nvarticle($_POST['titre'], $_POST['description'], $_SESSION['id_user'], $_POST['categories']);
-  }
+function get_user_by_email($email) {
+    require "config.php";
+    $sql = $connexion->prepare("SELECT * from user where email=? LIMIT 1");
+    $sql->execute([$email]);
+    $row = $sql->fetch(PDO::FETCH_ASSOC);
+
+    if ($row) {
+        return $row;
+    } else {
+        return false;
+    }
+}
+
+function create_user($email, $hashed_password, $admin) {
+    require "config.php";
+    $sql = $connexion->prepare("INSERT INTO user (email, mdp, admin) VALUES (?, ?, ?)");
+    $sql->execute([$email, $hashed_password, $admin]);
+    return $connexion->lastInsertId();
+}
+
 ?>
