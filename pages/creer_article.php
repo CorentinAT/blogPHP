@@ -5,7 +5,7 @@ require_once "../traitement/config.php" ?>
 <div class="w-full flex justify-center items-center my-5">
   <div class="w-10/12 bg-grey-400 p-8 rounded-lg shadow-md flex flex-col justify-center items-center space-y-4">
     <h1 class="text-2xl md:text-3xl mb-4">Ajouter un nouvel article</h1>
-    <form method="POST" lang="fr" title="article form" action="../traitement/traitement_forms.php" class="w-full">
+    <form method="POST" lang="fr" action="../traitement/traitement_forms.php" class="w-full">
       <div class="mb-4">
         <label for="titre" class="block text-sm md:text-base font-medium text-gray-600">Titre</label>
         <input type="text" name="titre" alt="titre article" id="titre" class="mt-1 p-2 w-full border rounded-md" autofocus required/>
