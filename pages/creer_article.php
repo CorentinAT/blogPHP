@@ -8,7 +8,7 @@ require_once "../traitement/config.php" ?>
     <form method="POST" lang="fr" title="article form" action="../traitement/sql.php" class="w-full">
       <div class="mb-4">
         <label for="titre" class="block text-sm md:text-base font-medium text-gray-600">Titre</label>
-        <input type="text" name="titre_article" alt="titre article" id="titre" class="mt-1 p-2 w-full border rounded-md" autofocus required/>
+        <input type="text" name="titre" alt="titre article" id="titre" class="mt-1 p-2 w-full border rounded-md" autofocus required/>
       </div>
       <div class="mb-4">
         <label for="categories" class="block text-sm md:text-base font-medium text-gray-600">Catégories</label>
@@ -17,14 +17,14 @@ require_once "../traitement/config.php" ?>
             $sql = "SELECT * FROM categorie";
             foreach($connexion->query($sql) as $categorie) {
               echo "<label for='". $categorie['nom'] ."'>". $categorie['nom'] ."</label>
-                <input type='checkbox' value='". $categorie['id'] ."' id='". $categorie['nom'] ."'/>";
+              <input type='checkbox' value='". $categorie['id'] ."' id='". $categorie['nom'] ."'/>";
             }
           ?>
         </fieldset>
       </div>
       <div class="mb-4">
         <label for="article" class="block text-sm md:text-base font-medium text-gray-600">Article</label>
-        <textarea class="border w-full resize-none" alt="contenu article" rows="20" id="article" required></textarea>
+        <textarea class="border w-full resize-none" alt="contenu article" name="description" rows="20" id="article" required></textarea>
       </div>
       <div class="flex justify-center">
         <button type="submit" name="form_sql" value="nvarticle" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200">
