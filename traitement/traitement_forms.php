@@ -10,8 +10,14 @@
   switch($_POST['form_name']) {
     case 'nvarticle':
       require 'sql.php';
-      nvarticle($_POST['titre'], $_POST['description'], $_SESSION['user_id'], $_POST['categories']);
-      header("Location: ../index.php");
-      exit(0);
+      if(isset($_POST['titre']) && isset($_POST['description']) && isset($_SESSION['id_user'])) {
+        nvarticle($_POST['titre'], $_POST['description'], $_SESSION['id_user'], $_POST['categories']);
+        header("Location: http://localhost/index.php");
+        exit(0);
+      } else {
+        $_SESSION['error_article'] = "article non valide";
+        header("Location: http://localhost/pages/creer_article.php");
+        exit(0);
+      }
   }
 ?>

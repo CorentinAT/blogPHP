@@ -13,8 +13,8 @@ switch ($_POST['form_name']) {
             # utilisateur n'existe pas
             if ($user == false){
                 $hashed_pwd = hash("sha256", $_POST['password']);
-                $user_id = create_user($_POST['email'], $hashed_pwd, 0);
-                $_SESSION['id_user'] = $user_id;
+                $id_user = create_user($_POST['email'], $hashed_pwd, 0);
+                $_SESSION['id_user'] = $id_user;
                 header("Location: http://localhost/index.php");
                 exit(0);
             } else {
