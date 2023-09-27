@@ -12,15 +12,21 @@ require_once "../traitement/config.php" ?>
       </div>
       <div class="mb-4">
         <label for="categories" class="block text-sm md:text-base font-medium text-gray-600">Catégories</label>
-        <fieldset id="categories">
+        <fieldset id="categories" class="flex gap-3">
           <?php
             $sql = "SELECT * FROM categorie";
             foreach($connexion->query($sql) as $categorie) {
-              echo "<label for='". $categorie['nom'] ."'>". $categorie['nom'] ."</label>
-              <input type='checkbox' name='categories[]' value='". $categorie['id'] ."' id='". $categorie['nom'] ."'/>";
+              echo "<input type='checkbox' name='categories[]' value='". $categorie['id'] ."' id='". $categorie['nom'] ."' class='hidden'/>
+              <label for='". $categorie['nom'] ."' class='border rounded-2xl p-2 select-none transition-all duration-200 flex justify-center items-center'>". $categorie['nom'] ."</label>";
             }
           ?>
         </fieldset>
+        <style>
+          #categories input:checked + label {
+            background-color: rgb(59 130 246);
+            color: white;
+          }
+        </style>
       </div>
       <div class="mb-4">
         <label for="article" class="block text-sm md:text-base font-medium text-gray-600">Article</label>
