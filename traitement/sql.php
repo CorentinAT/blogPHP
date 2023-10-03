@@ -44,4 +44,11 @@ function create_user($email, $hashed_password, $admin) {
     return $connexion->lastInsertId();
 }
 
+function set_pseudo($user_id, $pseudo) {
+    require "config.php";
+    $sql = $connexion->prepare("UPDATE user set pseudo = ? where id = ?");
+    $sql->execute([$pseudo, intval($user_id)]);
+    return $connexion->lastInsertId();
+}
+
 ?>

@@ -1,7 +1,7 @@
 <?php require_once("./config.php");
 require "sql.php";
 switch ($_POST['form_name']) {
-    # check isset email / password
+
     case "login_form":
 
         $_SESSION["error_mdp"] = "";
@@ -15,17 +15,18 @@ switch ($_POST['form_name']) {
                 $hashed_pwd = hash("sha256", $_POST['password']);
                 $id_user = create_user($_POST['email'], $hashed_pwd, 0);
                 $_SESSION['id_user'] = $id_user;
-                header("Location: http://localhost/index.php");
+                header("Location: /pages/pseudo.php");
                 exit(0);
             } else {
                 $hashed_pwd = hash("sha256", $_POST['password']);
                 if ($hashed_pwd === $user["mdp"]) {
                     $_SESSION['id_user'] = $user["id"];
-                    header("Location: http://localhost/index.php");
+                    $_SESSION['is_admin'] = ($user["admin"] == "1");
+                    header("Location: /index.php");
                     exit(0);
                 } else {
                     $_SESSION["error_mdp"] = "le mot de passe ne correspond pas";
-                    header("Location: http://localhost/pages/login.php");
+                    header("Location: /pages/login.php");
                     exit(0);
                 }
             }
