@@ -13,7 +13,7 @@
 
       if(!empty($_POST['titre']) && !empty($_POST['description']) && isset($_SESSION['id_user'])) {
         nvarticle($_POST['titre'], $_POST['description'], $_SESSION['id_user'], $_POST['categories']);
-        header("Location: http://localhost/index.php");
+        header("Location: /index.php");
         exit(0);
       } else {
         if(empty($_POST['titre'])) {
@@ -23,7 +23,7 @@
         } else {
           $_SESSION['error_article'] = "Erreur dans la publication de l'article";
         }
-        header("Location: http://localhost/pages/creer_article.php");
+        header("Location: /pages/creer_article.php");
         exit(0);
       }
 
