@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le : mer. 27 sep. 2023 à 07:34
--- Version du serveur : 8.0.31
--- Version de PHP : 8.0.26
+-- Host: localhost:8889
+-- Generation Time: Oct 03, 2023 at 02:33 PM
+-- Server version: 5.7.39
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,96 +18,143 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `blog`
+-- Database: `blog`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `article`
+-- Table structure for table `article`
 --
 
-DROP TABLE IF EXISTS `article`;
-CREATE TABLE IF NOT EXISTS `article` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `titre` varchar(100) COLLATE utf8mb4_bin NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `categories` int NOT NULL,
-  `id_user` int NOT NULL,
-  `commentaires` int DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+CREATE TABLE `article` (
+                           `id` int(11) NOT NULL,
+                           `titre` varchar(100) COLLATE utf8mb4_bin NOT NULL,
+                           `description` text COLLATE utf8mb4_bin NOT NULL,
+                           `categories` int(11) NOT NULL,
+                           `id_user` int(11) NOT NULL,
+                           `commentaires` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
--- Déchargement des données de la table `article`
+-- Dumping data for table `article`
 --
 
 INSERT INTO `article` (`id`, `titre`, `description`, `categories`, `id_user`, `commentaires`) VALUES
-(1, 'zrgergerger', 'gegetrth', 0, 0, NULL);
+    (1, 'zrgergerger', 'gegetrth', 0, 0, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `categorie`
+-- Table structure for table `categorie`
 --
 
-DROP TABLE IF EXISTS `categorie`;
-CREATE TABLE IF NOT EXISTS `categorie` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nom` varchar(20) COLLATE utf8mb4_bin NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+CREATE TABLE `categorie` (
+                             `id` int(11) NOT NULL,
+                             `nom` varchar(20) COLLATE utf8mb4_bin NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
--- Déchargement des données de la table `categorie`
+-- Dumping data for table `categorie`
 --
 
 INSERT INTO `categorie` (`id`, `nom`) VALUES
-(1, 'Web');
+    (1, 'Web');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `commentaire`
+-- Table structure for table `commentaire`
 --
 
-DROP TABLE IF EXISTS `commentaire`;
-CREATE TABLE IF NOT EXISTS `commentaire` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `description` text COLLATE utf8mb4_bin NOT NULL,
-  `article` text COLLATE utf8mb4_bin NOT NULL,
-  `id_user` int NOT NULL,
-  `id_article` int NOT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `commentaire` (
+                               `id` int(11) NOT NULL,
+                               `description` text COLLATE utf8mb4_bin NOT NULL,
+                               `article` text COLLATE utf8mb4_bin NOT NULL,
+                               `id_user` int(11) NOT NULL,
+                               `id_article` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `lien_categorie_article`
+-- Table structure for table `lien_categorie_article`
 --
 
-DROP TABLE IF EXISTS `lien_categorie_article`;
-CREATE TABLE IF NOT EXISTS `lien_categorie_article` (
-  `id_article` int NOT NULL,
-  `id_categorie` int NOT NULL
+CREATE TABLE `lien_categorie_article` (
+                                          `id_article` int(11) NOT NULL,
+                                          `id_categorie` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `user`
+-- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `email` text COLLATE utf8mb4_bin NOT NULL,
-  `pseudo` varchar(20) COLLATE utf8mb4_bin NOT NULL,
-  `mdp` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `admin` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `user` (
+                        `id` int(11) NOT NULL,
+                        `email` text COLLATE utf8mb4_bin NOT NULL,
+                        `pseudo` varchar(20) COLLATE utf8mb4_bin NOT NULL DEFAULT '',
+                        `mdp` varchar(300) COLLATE utf8mb4_bin NOT NULL,
+                        `admin` tinyint(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `article`
+--
+ALTER TABLE `article`
+    ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `categorie`
+--
+ALTER TABLE `categorie`
+    ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `commentaire`
+--
+ALTER TABLE `commentaire`
+    ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+    ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `article`
+--
+ALTER TABLE `article`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `categorie`
+--
+ALTER TABLE `categorie`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `commentaire`
+--
+ALTER TABLE `commentaire`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
