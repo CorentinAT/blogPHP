@@ -1,5 +1,30 @@
 <?php
 
+  function get_user_by_id($id) {
+    require "config.php";
+    $sql = $connexion->prepare("SELECT pseudo FROM user WHERE id=?");
+    $sql->execute([$id]);
+    $row = $sql->fetch(PDO::FETCH_ASSOC);
+
+    if ($row) {
+        return $row;
+    } else {
+        return false;
+    }
+  }
+
+  function get_articles() {
+    require "config.php";
+    $sql = "SELECT * FROM article";
+    $rows = $connexion->query($sql);
+
+    if($rows) {
+      return $rows;
+    } else {
+      return false;
+    }
+  }
+
   function nvarticle($titre, $description, $id_user, $categories) {
     require "config.php";
     $sql = $connexion->prepare("INSERT INTO article (titre, description, id_user) VALUES (?, ?, ?)");
