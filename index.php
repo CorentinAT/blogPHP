@@ -7,6 +7,34 @@
 <a href="http://localhost/pages/creer_article.php" class="text-blue-500 hover:underline">creer article</a>
 
 <div class="flex flex-col gap-3 items-center">
+  <div class="w-8/12">
+    <form class="flex justify-between gap-2">
+      
+      <fieldset id="categories" class="flex flex-wrap gap-3">
+        <?php
+          $categories = get_categories();
+          if($categories!==false) {
+            foreach($categories as $categorie) {
+              echo "<input type='checkbox' name='categories[]' value='". $categorie['id'] ."' id='". $categorie['nom'] ."' class='hidden'/>
+              <label for='". $categorie['nom'] ."' class='border rounded-2xl p-2 select-none transition-all duration-200 flex justify-center items-center hover:bg-blue-100 hover:cursor-pointer'>". $categorie['nom'] ."</label>";
+            }
+          } else {
+            echo "<p class='text-red-500'>Erreur dans le chargement des catégories</p>";
+          }
+        ?>
+      </fieldset>
+      <style>
+        #categories input:checked + label {
+          background-color: rgb(59 130 246);
+          color: white;
+        }
+      </style>
+
+      <input type="text" class="border w-1/2 rounded h-fit p-2 self-center" placeholder="Recherche"/>
+      <button type="submit" class="border h-fit p-2 self-center rounded">Trier</button>
+    </form>
+  </div>
+
   <?php
     $articles = get_articles();
     foreach($articles as $article) {
