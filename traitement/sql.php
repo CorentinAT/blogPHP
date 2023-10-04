@@ -1,5 +1,12 @@
 <?php
 
+  function delete_article_from_id($id) {
+    require "config.php";
+    $sql = $connexion->prepare("DELETE FROM article WHERE id=?");
+    $sql->execute([$id]);
+    return true;
+  }
+
   function get_user_by_id($id) {
     require "config.php";
     $sql = $connexion->prepare("SELECT * FROM user WHERE id=?");
@@ -15,7 +22,27 @@
 
   function get_articles() {
     require "config.php";
-    $sql = "SELECT * FROM article";
+    $sql = "SELECT * FROM article ORDER BY id DESC";
+    $rows = $connexion->query($sql);
+
+    if($rows) {
+      return $rows;
+    } else {
+      return false;
+    }
+  }
+
+  function get_articles_from_categories_and_titre($categories, $titre) {
+    require "config.php";
+    $sql = "SELECT DISTINCT a.* FROM article a LEFT JOIN lien_categorie_article l ON a.id=l.id_article WHERE LOWER(a.titre) LIKE '%".trim(strtolower($titre))."%'";
+    for($i=0; $i<count($categories); $i++) {
+      if($i==0) {
+        $sql .= " AND id_categorie=".$categories[$i];
+      } else {
+        $sql .= " OR id_categorie=".$categories[$i];
+      }
+    }
+    $sql .= " ORDER BY a.id DESC";
     $rows = $connexion->query($sql);
 
     if($rows) {
@@ -66,6 +93,18 @@ function get_user_by_email($email) {
 function get_categories() {
   require "config.php";
   $sql = "SELECT * FROM categorie";
+  $rows = $connexion->query($sql);
+
+  if($rows) {
+    return $rows;
+  } else {
+    return false;
+  }
+}
+
+function get_categories_from_article($id_article) {
+  require "config.php";
+  $sql = "SELECT c.* FROM categorie c JOIN lien_categorie_article l ON c.id=l.id_categorie WHERE l.id_article=".$id_article;
   $rows = $connexion->query($sql);
 
   if($rows) {
