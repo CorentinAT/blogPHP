@@ -69,6 +69,18 @@ function get_categories() {
   }
 }
 
+function get_categories_from_article($id_article) {
+  require "config.php";
+  $sql = "SELECT c.* FROM categorie c JOIN lien_categorie_article l ON c.id=l.id_categorie WHERE l.id_article=".$id_article;
+  $rows = $connexion->query($sql);
+
+  if($rows) {
+    return $rows;
+  } else {
+    return false;
+  }
+}
+
 function create_user($email, $hashed_password, $admin) {
     require "config.php";
     $sql = $connexion->prepare("INSERT INTO user (email, mdp, admin) VALUES (?, ?, ?)");

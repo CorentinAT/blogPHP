@@ -40,7 +40,7 @@
   <?php
     $articles = get_articles();
     foreach($articles as $article) {
-      echo "<a href='google.com' class='w-8/12 rounded border p-3'>
+      echo "<a href='google.com' class='w-8/12 rounded border p-3 flex flex-col gap-1'>
         <div class='flex justify-between'>
         <h2 class='text-2xl'>".$article['titre']."</h2>";
 
@@ -59,8 +59,18 @@
         echo $user['email'];
       }
       echo "</p>
-        <p class='overflow-hidden whitespace-nowrap text-ellipsis'>".$article['description']."</p>
-        </a>";
+        <p class='overflow-hidden whitespace-nowrap text-ellipsis'>".$article['description']."</p>";
+
+      $categories = get_categories_from_article($article['id']);
+      if($categories!==false) {
+        echo "<div class='flex gap-1'>";
+        foreach($categories as $categorie) {
+          echo "<div class='border text-sm w-fit p-1 rounded'>".$categorie['nom']."</div>";
+        }
+        echo "</div>";
+      }
+
+      echo "</a>";
     }
   ?>
 </div>
