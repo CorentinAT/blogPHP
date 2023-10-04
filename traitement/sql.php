@@ -2,7 +2,7 @@
 
   function get_user_by_id($id) {
     require "config.php";
-    $sql = $connexion->prepare("SELECT pseudo FROM user WHERE id=?");
+    $sql = $connexion->prepare("SELECT * FROM user WHERE id=?");
     $sql->execute([$id]);
     $row = $sql->fetch(PDO::FETCH_ASSOC);
 
