@@ -42,6 +42,7 @@
         $sql .= " OR id_categorie=".$categories[$i];
       }
     }
+    $sql .= " ORDER BY a.id DESC";
     $rows = $connexion->query($sql);
 
     if($rows) {
