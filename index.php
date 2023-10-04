@@ -10,7 +10,7 @@
   <?php
     $articles = get_articles();
     foreach($articles as $article) {
-      echo "<div class='w-8/12 rounded border p-3'>
+      echo "<a href='google.com' class='w-8/12 rounded border p-3'>
         <h2 class='text-2xl'>".$article['titre']."</h2>
         <p class='italic text-sm'>Par ";
         $user = get_user_by_id($article['id_user']);
@@ -21,7 +21,7 @@
         }
         echo "</p>
         <p class='overflow-hidden whitespace-nowrap text-ellipsis'>".$article['description']."</p>
-      </div>";
+      </a>";
     }
   ?>
 </div>
