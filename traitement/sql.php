@@ -1,5 +1,12 @@
 <?php
 
+  function delete_article_from_id($id) {
+    require "config.php";
+    $sql = $connexion->prepare("DELETE FROM article WHERE id=?");
+    $sql->execute([$id]);
+    return true;
+  }
+
   function get_user_by_id($id) {
     require "config.php";
     $sql = $connexion->prepare("SELECT * FROM user WHERE id=?");
