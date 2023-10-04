@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 27 sep. 2023 à 07:34
+-- Généré le : mer. 04 oct. 2023 à 06:12
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -36,14 +36,7 @@ CREATE TABLE IF NOT EXISTS `article` (
   `id_user` int NOT NULL,
   `commentaires` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
-
---
--- Déchargement des données de la table `article`
---
-
-INSERT INTO `article` (`id`, `titre`, `description`, `categories`, `id_user`, `commentaires`) VALUES
-(1, 'zrgergerger', 'gegetrth', 0, 0, NULL);
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- --------------------------------------------------------
 
@@ -56,14 +49,7 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(20) COLLATE utf8mb4_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
-
---
--- Déchargement des données de la table `categorie`
---
-
-INSERT INTO `categorie` (`id`, `nom`) VALUES
-(1, 'Web');
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- --------------------------------------------------------
 
@@ -107,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `mdp` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `admin` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
