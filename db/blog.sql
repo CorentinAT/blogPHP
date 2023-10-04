@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 04 oct. 2023 à 06:12
+-- Généré le : mer. 04 oct. 2023 à 06:31
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `blog`
+-- Base de données : `blog`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `article`
+-- Structure de la table `article`
 --
 
 DROP TABLE IF EXISTS `article`;
@@ -36,12 +36,21 @@ CREATE TABLE IF NOT EXISTS `article` (
   `id_user` int NOT NULL,
   `commentaires` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- Déchargement des données de la table `article`
+--
+
+INSERT INTO `article` (`id`, `titre`, `description`, `categories`, `id_user`, `commentaires`) VALUES
+(21, 'zegrrgergerger', 'hhtrhrzgergre', 0, 2, NULL),
+(22, 'grgergergre', 'fezfzegz', 0, 3, NULL),
+(23, 'fezfzefzeg', 'rgergerger', 0, 3, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categorie`
+-- Structure de la table `categorie`
 --
 
 DROP TABLE IF EXISTS `categorie`;
@@ -54,43 +63,54 @@ CREATE TABLE IF NOT EXISTS `categorie` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `commentaire`
+-- Structure de la table `commentaire`
 --
 
-CREATE TABLE `commentaire` (
-                               `id` int(11) NOT NULL,
-                               `description` text COLLATE utf8mb4_bin NOT NULL,
-                               `article` text COLLATE utf8mb4_bin NOT NULL,
-                               `id_user` int(11) NOT NULL,
-                               `id_article` int(11) NOT NULL
+DROP TABLE IF EXISTS `commentaire`;
+CREATE TABLE IF NOT EXISTS `commentaire` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `description` text COLLATE utf8mb4_bin NOT NULL,
+  `article` text COLLATE utf8mb4_bin NOT NULL,
+  `id_user` int NOT NULL,
+  `id_article` int NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lien_categorie_article`
+-- Structure de la table `lien_categorie_article`
 --
 
-CREATE TABLE `lien_categorie_article` (
-                                          `id_article` int(11) NOT NULL,
-                                          `id_categorie` int(11) NOT NULL
+DROP TABLE IF EXISTS `lien_categorie_article`;
+CREATE TABLE IF NOT EXISTS `lien_categorie_article` (
+  `id_article` int NOT NULL,
+  `id_categorie` int NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Structure de la table `user`
 --
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int NOT NULL AUTO_INCREMENT,
   `email` text COLLATE utf8mb4_bin NOT NULL,
-  `pseudo` varchar(20) COLLATE utf8mb4_bin NOT NULL,
+  `pseudo` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '',
   `mdp` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `admin` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`id`, `email`, `pseudo`, `mdp`, `admin`) VALUES
+(2, 'coco@fr.com', '', '633e82d909399a366093a8130bb944d29c574a27a7a9bb32ba903145f3ca2119', 0),
+(3, 'zrgererg@hegerg.ferger', 'corentinalberi', '9834876dcfb05cb167a5c24953eba58c4ac89b1adf57f28f2f9d09af107ee8f0', 0);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
