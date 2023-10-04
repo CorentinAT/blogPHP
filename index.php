@@ -30,8 +30,10 @@
         }
       </style>
 
-      <input type="text" class="border w-1/2 rounded h-fit p-2 self-center" placeholder="Recherche"/>
-      <button type="submit" class="border h-fit p-2 self-center rounded">Trier</button>
+      <div class="flex justify-end gap-2 w-1/2">
+        <input type="text" class="border w-full rounded h-fit p-2 self-center" placeholder="Recherche"/>
+        <button type="submit" class="border h-fit p-2 self-center rounded">Trier</button>
+      </div>
     </form>
   </div>
 
