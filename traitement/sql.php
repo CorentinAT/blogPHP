@@ -32,6 +32,21 @@
     }
   }
 
+  function get_articles_from_categories($categories) {
+    require "config.php";
+    $sql = "SELECT a.* FROM article a JOIN lien_categorie_article l ON a.id=l.id_article WHERE id_categorie=".$categories[0];
+    for($i=1; $i<count($categories); $i++) {
+      $sql .= " OR id_categorie=".$categories[$i];
+    }
+    $rows = $connexion->query($sql);
+
+    if($rows) {
+      return $rows;
+    } else {
+      return false;
+    }
+  }
+
   function nvarticle($titre, $description, $id_user, $categories) {
     require "config.php";
     $sql = $connexion->prepare("INSERT INTO article (titre, description, id_user) VALUES (?, ?, ?)");

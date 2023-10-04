@@ -8,14 +8,19 @@
 
 <div class="flex flex-col gap-3 items-center">
   <div class="w-8/12">
-    <form class="flex justify-between gap-2">
+    <form class="flex justify-between gap-2" method="GET">
       
       <fieldset id="categories" class="flex flex-wrap gap-3">
         <?php
           $categories = get_categories();
           if($categories!==false) {
             foreach($categories as $categorie) {
-              echo "<input type='checkbox' name='categories[]' value='". $categorie['id'] ."' id='". $categorie['nom'] ."' class='hidden'/>
+              if(isset($_GET['categories']) && in_array($categorie['id'], $_GET['categories'])) {
+                $checked = "checked";
+              } else {
+                $checked = "";
+              }
+              echo "<input type='checkbox' name='categories[]' value='". $categorie['id'] ."' id='". $categorie['nom'] ."' class='hidden' ".$checked."/>
               <label for='". $categorie['nom'] ."' class='border rounded-2xl p-2 select-none transition-all duration-200 flex justify-center items-center hover:bg-blue-100 hover:cursor-pointer'>". $categorie['nom'] ."</label>";
             }
           } else {
@@ -38,7 +43,11 @@
   </div>
 
   <?php
-    $articles = get_articles();
+    if(isset($_GET['categories'])) {
+      $articles = get_articles_from_categories($_GET['categories']);
+    } else {
+      $articles = get_articles();
+    }
     foreach($articles as $article) {
       echo "<a href='google.com' class='w-8/12 rounded border p-3 flex flex-col gap-1'>
         <div class='flex justify-between'>
