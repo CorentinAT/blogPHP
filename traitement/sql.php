@@ -34,7 +34,7 @@
 
   function get_articles_from_categories($categories) {
     require "config.php";
-    $sql = "SELECT a.* FROM article a JOIN lien_categorie_article l ON a.id=l.id_article WHERE id_categorie=".$categories[0];
+    $sql = "SELECT DISTINCT a.* FROM article a JOIN lien_categorie_article l ON a.id=l.id_article WHERE id_categorie=".$categories[0];
     for($i=1; $i<count($categories); $i++) {
       $sql .= " OR id_categorie=".$categories[$i];
     }
