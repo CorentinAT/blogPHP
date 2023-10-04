@@ -65,7 +65,7 @@
       if(isset($_SESSION['id_user'])) {
         $visiteur = get_user_by_id($_SESSION['id_user']);
         if($visiteur['admin']=="1" || $article['id_user']==$visiteur['id']) {
-          echo "<button class='text-red-500 self-end hover:underline'>Supprimer</button>";
+          echo "<form method='GET' action='./traitement/supprimer.php'><button type='submit' name='id' value='".$article['id']."' class='text-red-500 self-end hover:underline'>Supprimer</button></form>";
         }
       }
 
