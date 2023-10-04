@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 04 oct. 2023 à 06:31
+-- Généré le : mer. 04 oct. 2023 à 06:37
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -32,9 +32,7 @@ CREATE TABLE IF NOT EXISTS `article` (
   `id` int NOT NULL AUTO_INCREMENT,
   `titre` varchar(100) COLLATE utf8mb4_bin NOT NULL,
   `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `categories` int NOT NULL,
   `id_user` int NOT NULL,
-  `commentaires` int DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
@@ -42,10 +40,10 @@ CREATE TABLE IF NOT EXISTS `article` (
 -- Déchargement des données de la table `article`
 --
 
-INSERT INTO `article` (`id`, `titre`, `description`, `categories`, `id_user`, `commentaires`) VALUES
-(21, 'zegrrgergerger', 'hhtrhrzgergre', 0, 2, NULL),
-(22, 'grgergergre', 'fezfzegz', 0, 3, NULL),
-(23, 'fezfzefzeg', 'rgergerger', 0, 3, NULL);
+INSERT INTO `article` (`id`, `titre`, `description`, `id_user`) VALUES
+(21, 'zegrrgergerger', 'hhtrhrzgergre', 2),
+(22, 'grgergergre', 'fezfzegz', 3),
+(23, 'fezfzefzeg', 'rgergerger', 3);
 
 -- --------------------------------------------------------
 
@@ -102,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `mdp` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `admin` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Déchargement des données de la table `user`
@@ -110,7 +108,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id`, `email`, `pseudo`, `mdp`, `admin`) VALUES
 (2, 'coco@fr.com', '', '633e82d909399a366093a8130bb944d29c574a27a7a9bb32ba903145f3ca2119', 0),
-(3, 'zrgererg@hegerg.ferger', 'corentinalberi', '9834876dcfb05cb167a5c24953eba58c4ac89b1adf57f28f2f9d09af107ee8f0', 0);
+(3, 'zrgererg@hegerg.ferger', 'corentinalberi', '9834876dcfb05cb167a5c24953eba58c4ac89b1adf57f28f2f9d09af107ee8f0', 0),
+(4, 'fffff@fff.fff', 'ffffffffff', 'f284bdc3c1c9e24a494e285cb387c69510f28de51c15bb93179d9c7f28705398', 0);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
