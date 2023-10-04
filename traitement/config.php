@@ -6,6 +6,6 @@ error_reporting(E_ALL);
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-$connexion = new PDO('mysql:host=localhost;dbname=blog', 'root', '');
+$connexion = new PDO('mysql:host=localhost;dbname=blog', 'root', 'root');
 $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ?>

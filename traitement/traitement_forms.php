@@ -41,5 +41,14 @@
             header("Location: /pages/pseudo.php");
             exit(0);
         }
+
+    case 'commentaire_form':
+      if (isset($_POST['commentaire']) && isset($_SESSION['id_user']) && isset($_SESSION["id_article"])) {
+          $id = $_SESSION["id_article"];
+          unset($_SESSION["id_article"]);
+          ajout_commentaire($_POST['commentaire'], $id, $_SESSION['id_user']);
+          header('Location: /pages/article.php?id=' . $id);
+          exit(0);
+      }
   }
 ?>

@@ -25,6 +25,19 @@
     }
   }
 
+function get_article($id) {
+    require "config.php";
+    $sql = $connexion->prepare("SELECT * FROM article where id = ?");
+    $sql->execute([$id]);
+    $row = $sql->fetch(PDO::FETCH_ASSOC);
+
+    if($row) {
+        return $row;
+    } else {
+        return false;
+    }
+}
+
   function nvarticle($titre, $description, $id_user, $categories) {
     require "config.php";
     $sql = $connexion->prepare("INSERT INTO article (titre, description, id_user) VALUES (?, ?, ?)");
@@ -68,6 +81,30 @@ function create_user($email, $hashed_password, $admin) {
     $sql->execute([$email, $hashed_password, $admin]);
     return $connexion->lastInsertId();
 }
+
+function ajout_commentaire($description, $article_id, $user_id) {
+    require "config.php";
+    $sql = $connexion->prepare("INSERT INTO commentaire (description, id_user, id_article) VALUES (?, ?, ?)");
+    $sql->execute([$description, $user_id, $article_id]);
+    return $connexion->lastInsertId();
+}
+
+function get_commentaires_article($id_article) {
+    require "config.php";
+
+    $sql = "SELECT * FROM commentaire 
+            JOIN user ON commentaire.id_user = user.id 
+            WHERE commentaire.id_article = ?
+            ORDER BY commentaire.id desc";
+
+    $stmt = $connexion->prepare($sql);
+    $stmt->execute([$id_article]);
+
+    $commentaires = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $commentaires;
+}
+
 
 function set_pseudo($user_id, $pseudo) {
     require "config.php";
