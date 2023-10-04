@@ -10,18 +10,27 @@
   <?php
     $articles = get_articles();
     foreach($articles as $article) {
-      echo "<a href='google.com' class='w-8/12 rounded border p-3'>
-        <h2 class='text-2xl'>".$article['titre']."</h2>
-        <p class='italic text-sm'>Par ";
-        $user = get_user_by_id($article['id_user']);
-        if(!empty($user['pseudo'])) {
-          echo $user['pseudo'];
-        } else {
-          echo $user['email'];
+      echo "<a href='google.com' class='w-8/12 rounded border p-3 flex flex-col'>
+        <div class='flex justify-between'>
+        <h2 class='text-2xl'>".$article['titre']."</h2>";
+
+      if(isset($_SESSION['id_user'])) {
+        $visiteur = get_user_by_id($_SESSION['id_user']);
+        if($visiteur['admin']=="1" || $article['id_user']==$visiteur['id']) {
+          echo "<div href='yahoo.fr' class='text-red-500 self-end hover:underline'>Supprimer</div>";
         }
-        echo "</p>
+      }
+
+      echo "</div><p class='italic text-sm'>Par ";
+      $user = get_user_by_id($article['id_user']);
+      if(!empty($user['pseudo'])) {
+        echo $user['pseudo'];
+      } else {
+        echo $user['email'];
+      }
+      echo "</p>
         <p class='overflow-hidden whitespace-nowrap text-ellipsis'>".$article['description']."</p>
-      </a>";
+        </a>";
     }
   ?>
 </div>

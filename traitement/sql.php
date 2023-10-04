@@ -15,7 +15,7 @@
 
   function get_articles() {
     require "config.php";
-    $sql = "SELECT * FROM article";
+    $sql = "SELECT * FROM article ORDER BY id DESC";
     $rows = $connexion->query($sql);
 
     if($rows) {
