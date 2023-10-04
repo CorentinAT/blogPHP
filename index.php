@@ -3,9 +3,6 @@
   require "./traitement/sql.php";
 ?>
 
-<h1 class="text-2xl ">BLOG</h1>
-<a href="http://localhost/pages/creer_article.php" class="text-blue-500 hover:underline">creer article</a>
-
 <div class="flex flex-col gap-3 items-center">
   <div class="w-8/12">
     <form class="flex justify-between gap-2" method="GET">
@@ -95,4 +92,3 @@
     }
   ?>
 </div>
-<a href="/pages/creer_article.php">creer article</a>
