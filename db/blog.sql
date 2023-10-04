@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `blog`
+-- Database: `blog`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `article`
+-- Table structure for table `article`
 --
 
 DROP TABLE IF EXISTS `article`;
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `article` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `categorie`
+-- Table structure for table `categorie`
 --
 
 DROP TABLE IF EXISTS `categorie`;
@@ -54,35 +54,32 @@ CREATE TABLE IF NOT EXISTS `categorie` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `commentaire`
+-- Table structure for table `commentaire`
 --
 
-DROP TABLE IF EXISTS `commentaire`;
-CREATE TABLE IF NOT EXISTS `commentaire` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `description` text COLLATE utf8mb4_bin NOT NULL,
-  `article` text COLLATE utf8mb4_bin NOT NULL,
-  `id_user` int NOT NULL,
-  `id_article` int NOT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `commentaire` (
+                               `id` int(11) NOT NULL,
+                               `description` text COLLATE utf8mb4_bin NOT NULL,
+                               `article` text COLLATE utf8mb4_bin NOT NULL,
+                               `id_user` int(11) NOT NULL,
+                               `id_article` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `lien_categorie_article`
+-- Table structure for table `lien_categorie_article`
 --
 
-DROP TABLE IF EXISTS `lien_categorie_article`;
-CREATE TABLE IF NOT EXISTS `lien_categorie_article` (
-  `id_article` int NOT NULL,
-  `id_categorie` int NOT NULL
+CREATE TABLE `lien_categorie_article` (
+                                          `id_article` int(11) NOT NULL,
+                                          `id_categorie` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `user`
+-- Table structure for table `user`
 --
 
 DROP TABLE IF EXISTS `user`;

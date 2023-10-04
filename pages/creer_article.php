@@ -41,7 +41,7 @@ require_once "../traitement/config.php"; ?>
       </div>
       <div class="mb-4">
         <label for="article" class="block text-sm md:text-base font-medium text-gray-600">Article</label>
-        <textarea class="border w-full resize-none" alt="contenu article" name="description" rows="20" id="article" required></textarea>
+        <textarea class="border w-full resize-none"  name="description" rows="20" id="article" required></textarea>
       </div>
       <div class="flex justify-center">
         <button type="submit" name="form_name" value="nvarticle" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200">

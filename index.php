@@ -18,3 +18,4 @@
     }
   ?>
 </div>
+<a href="/pages/creer_article.php">creer article</a>
