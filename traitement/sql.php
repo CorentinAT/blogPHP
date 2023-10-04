@@ -32,11 +32,15 @@
     }
   }
 
-  function get_articles_from_categories($categories) {
+  function get_articles_from_categories_and_titre($categories, $titre) {
     require "config.php";
-    $sql = "SELECT DISTINCT a.* FROM article a JOIN lien_categorie_article l ON a.id=l.id_article WHERE id_categorie=".$categories[0];
-    for($i=1; $i<count($categories); $i++) {
-      $sql .= " OR id_categorie=".$categories[$i];
+    $sql = "SELECT DISTINCT a.* FROM article a LEFT JOIN lien_categorie_article l ON a.id=l.id_article WHERE LOWER(a.titre) LIKE '%".trim(strtolower($titre))."%'";
+    for($i=0; $i<count($categories); $i++) {
+      if($i==0) {
+        $sql .= " AND id_categorie=".$categories[$i];
+      } else {
+        $sql .= " OR id_categorie=".$categories[$i];
+      }
     }
     $rows = $connexion->query($sql);
 

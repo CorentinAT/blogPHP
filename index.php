@@ -36,15 +36,26 @@
       </style>
 
       <div class="flex justify-end gap-2 w-1/2">
-        <input type="text" class="border w-full rounded h-fit p-2 self-center" placeholder="Recherche"/>
+        <?php
+          if(isset($_GET['titre'])) {
+            $titre = $_GET['titre'];
+          } else {
+            $titre = "";
+          }
+        ?>
+        <input type="text" name="titre" class="border w-full rounded h-fit p-2 self-center" placeholder="Recherche" value="<?php echo $titre ?>"/>
         <button type="submit" class="border h-fit p-2 self-center rounded">Trier</button>
       </div>
     </form>
   </div>
 
   <?php
-    if(isset($_GET['categories'])) {
-      $articles = get_articles_from_categories($_GET['categories']);
+    if(isset($_GET['categories']) && isset($_GET['titre'])) {
+      $articles = get_articles_from_categories_and_titre($_GET['categories'], $_GET['titre']);
+    } else if(isset($_GET['categories'])) {
+      $articles = get_articles_from_categories_and_titre($_GET['categories'], "");
+    } else if(isset($_GET['titre'])) {
+      $articles = get_articles_from_categories_and_titre([], $_GET['titre']);
     } else {
       $articles = get_articles();
     }
