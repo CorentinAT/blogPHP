@@ -60,7 +60,7 @@
       $articles = get_articles();
     }
     foreach($articles as $article) {
-      $url = "/pages/article.php?id=" . $article['id'];
+      $url = "/pages/article.php?id=".$article['id'];
       echo "<a href=$url class='w-8/12 rounded border p-3 flex flex-col gap-1'>
         <div class='flex justify-between'>
         <h2 class='text-2xl'>".$article['titre']."</h2>";
