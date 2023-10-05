@@ -15,6 +15,7 @@ switch ($_POST['form_name']) {
                 $hashed_pwd = hash("sha256", $_POST['password']);
                 $id_user = create_user($_POST['email'], $hashed_pwd, 0);
                 $_SESSION['id_user'] = $id_user;
+                $_SESSION['is_admin'] = 0;
                 header("Location: /pages/pseudo.php");
                 exit(0);
             } else {
