@@ -10,7 +10,7 @@
   }
 ?>
 <div class="h-full w-full flex justify-center items-center gap-7 flex-wrap">
-    <div class="max-w-md w-full bg-grey-400 p-8 rounded-lg shadow-md flex flex-col justify-center items-center space-y-4">
+    <div class="max-w-md w-full bg-grey-400 p-8 rounded-lg shadow-md flex flex-col justify-center items-center space-y-4 mt-16">
         <h1 class="text-2xl md:text-3xl mb-4">Nouvelle catégorie</h1>
         <form method="post" lang="fr" title="categorie form" name="categorie_form" action="../traitement/traitement_forms.php" class="w-full">
             <div class="mb-4">
@@ -40,7 +40,7 @@
         </form>
     </div>
 
-    <div class="max-w-md w-full bg-grey-400 p-8 rounded-lg shadow-md flex flex-col justify-center items-center space-y-4">
+    <div class="max-w-md w-full bg-grey-400 p-8 rounded-lg shadow-md flex flex-col justify-center items-center space-y-4 mt-16">
         <h1 class="text-2xl md:text-3xl mb-4">Supprimer des catégories</h1>
         <form method="post" lang="fr" title="supprimer categorie form" name="supprimercate_form" action="../traitement/traitement_forms.php" class="w-full">
             

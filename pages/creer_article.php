@@ -2,8 +2,8 @@
 require "../traitement/require_auth.php";
 require_once "../traitement/config.php"; ?>
 
-<div class="w-full flex justify-center items-center my-5">
-  <div class="w-10/12 bg-grey-400 p-8 rounded-lg shadow-md flex flex-col justify-center items-center space-y-4">
+<div class="w-full flex justify-center items-center">
+  <div class="w-10/12 bg-grey-400 p-8 rounded-lg shadow-md flex flex-col justify-center items-center space-y-4 mb-5 mt-16">
     <h1 class="text-2xl md:text-3xl mb-4">Publier un nouvel article</h1>
     <?php
       if(isset($_SESSION["error_article"])){

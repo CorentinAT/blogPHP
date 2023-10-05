@@ -4,7 +4,7 @@
 ?>
 
 <div class="flex flex-col gap-3 items-center">
-  <div class="w-8/12 mt-14">
+  <div class="w-8/12 mt-16">
     <form class="flex justify-between gap-2" method="GET">
       
       <fieldset id="categories" class="flex flex-wrap gap-3">
