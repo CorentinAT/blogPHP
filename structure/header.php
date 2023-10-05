@@ -13,6 +13,9 @@
       <a href="/pages/creer_article.php" class="text-blue-500 hover:underline">Nouvel article</a>
       <?php
         session_start();
+        if(isset($_SESSION['id_user']) && $_SESSION['is_admin']==1) {
+          echo "<a href='/traitement/deconnexion.php' class='text-blue-500 hover:underline'>Nouvelle catégorie</a>";
+        }
         if(isset($_SESSION['id_user'])) {
           echo "<a href='/traitement/deconnexion.php' class='text-blue-500 hover:underline'>Déconnexion</a>";
         } else {

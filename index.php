@@ -63,8 +63,7 @@
         <h2 class='text-2xl'>".$article['titre']."</h2>";
 
       if(isset($_SESSION['id_user'])) {
-        $visiteur = get_user_by_id($_SESSION['id_user']);
-        if($visiteur['admin']=="1" || $article['id_user']==$visiteur['id']) {
+        if($_SESSION['is_admin']=="1" || $article['id_user']==$_SESSION['id_user']) {
           echo "<form method='GET' action='./traitement/supprimer.php'><button type='submit' name='id' value='".$article['id']."' class='text-red-500 self-end hover:underline'>Supprimer</button></form>";
         }
       }
