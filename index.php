@@ -56,7 +56,9 @@
     } else {
       $articles = get_articles();
     }
+    $compteur = 0;
     foreach($articles as $article) {
+      $compteur++;
       $url = "/pages/article.php?id=".$article['id'];
       echo "<a href=$url class='w-8/12 rounded border p-3 flex flex-col gap-1'>
         <div class='flex justify-between'>
@@ -88,6 +90,9 @@
       }
 
       echo "</a>";
+    }
+    if($compteur===0) {
+      echo "<p class='text-gray-500'>Aucun résultat</p>";
     }
   ?>
 </div>
