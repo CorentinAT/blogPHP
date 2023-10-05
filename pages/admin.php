@@ -44,7 +44,7 @@
         <h1 class="text-2xl md:text-3xl mb-4">Supprimer des catégories</h1>
         <form method="post" lang="fr" title="supprimer categorie form" name="supprimercate_form" action="../traitement/traitement_forms.php" class="w-full">
             
-          <fieldset id="categories" class="flex flex-wrap gap-3">
+          <fieldset id="categories" class="flex flex-wrap gap-3 mb-4">
             <?php
               $categories = get_categories();
               if($categories!==false) {

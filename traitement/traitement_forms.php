@@ -67,10 +67,19 @@
         } else {
           $_SESSION['error_categorie'] = "Veuillez entrer une catégorie";
         }
-        if(isset($_SESSION['error_categorie'])) {
-          header('Location: /pages/creer_categorie.php');
-          exit(0);
+        header('Location: /pages/admin.php');
+        exit(0);
+      }
+      header('Location: /index.php');
+      exit(0);
+
+    case 'supprimercate_form':
+      if(isset($_SESSION['id_user']) && $_SESSION['is_admin']==1 && isset($_POST['categories'])) {
+        foreach($_POST['categories'] as $categorie) {
+          delete_categorie($categorie);
         }
+        header('Location: /pages/admin.php');
+        exit(0);
       }
       header('Location: /index.php');
       exit(0);

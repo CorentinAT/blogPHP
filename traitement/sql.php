@@ -163,12 +163,20 @@ function get_commentaires_article($id_article) {
     return $commentaires;
 }
 
-
 function set_pseudo($user_id, $pseudo) {
     require "config.php";
     $sql = $connexion->prepare("UPDATE user set pseudo = ? where id = ?");
     $sql->execute([$pseudo, intval($user_id)]);
     return $connexion->lastInsertId();
+}
+
+function delete_categorie($id) {
+  require "config.php";
+  $sql = $connexion->prepare("DELETE FROM categorie WHERE id=?");
+  $sql->execute([$id]);
+  $sql = $connexion->prepare("DELETE FROM lien_categorie_article WHERE id_categorie=?");
+  $sql->execute([$id]);
+  return true;
 }
 
 ?>
