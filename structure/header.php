@@ -14,7 +14,7 @@
       <?php
         session_start();
         if(isset($_SESSION['id_user']) && $_SESSION['is_admin']==1) {
-          echo "<a href='/traitement/deconnexion.php' class='text-blue-500 hover:underline'>Nouvelle catégorie</a>";
+          echo "<a href='/pages/creer_categorie.php' class='text-blue-500 hover:underline'>Nouvelle catégorie</a>";
         }
         if(isset($_SESSION['id_user'])) {
           echo "<a href='/traitement/deconnexion.php' class='text-blue-500 hover:underline'>Déconnexion</a>";

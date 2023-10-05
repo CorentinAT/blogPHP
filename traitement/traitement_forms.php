@@ -50,5 +50,29 @@
           header('Location: /pages/article.php?id=' . $id);
           exit(0);
       }
+    
+    case 'categorie_form':
+      if(isset($_SESSION['id_user']) && $_SESSION['is_admin']==1 && isset($_POST['categorie'])) {
+        if(trim($_POST['categorie'])!=="") {
+          $compteur = 0;
+          $categories = get_categorie_by_name($_POST['categorie']);
+          foreach($categories as $categorie) {
+            $compteur++;
+          }
+          if($compteur===0) {
+            create_categorie(trim($_POST['categorie']));
+          } else {
+            $_SESSION['error_categorie'] = "La catégorie existe déjà";
+          }
+        } else {
+          $_SESSION['error_categorie'] = "Veuillez entrer une catégorie";
+        }
+        if(isset($_SESSION['error_categorie'])) {
+          header('Location: /pages/creer_categorie.php');
+          exit(0);
+        }
+      }
+      header('Location: /index.php');
+      exit(0);
   }
 ?>

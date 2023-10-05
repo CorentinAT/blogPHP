@@ -102,6 +102,18 @@ function get_categories() {
   }
 }
 
+function get_categorie_by_name($nom) {
+  require "config.php";
+  $sql = "SELECT * FROM categorie WHERE LOWER(nom) LIKE '%".trim(strtolower($nom))."%'";
+  $rows = $connexion->query($sql);
+
+  if($rows) {
+    return $rows;
+  } else {
+    return false;
+  }
+}
+
 function get_categories_from_article($id_article) {
   require "config.php";
   $sql = "SELECT c.* FROM categorie c JOIN lien_categorie_article l ON c.id=l.id_categorie WHERE l.id_article=".$id_article;
@@ -119,6 +131,13 @@ function create_user($email, $hashed_password, $admin) {
     $sql = $connexion->prepare("INSERT INTO user (email, mdp, admin) VALUES (?, ?, ?)");
     $sql->execute([$email, $hashed_password, $admin]);
     return $connexion->lastInsertId();
+}
+
+function create_categorie($categorie) {
+  require "config.php";
+  $sql = $connexion->prepare("INSERT INTO categorie (nom) VALUES (?)");
+  $sql->execute([$categorie]);
+  return $connexion->lastInsertId();
 }
 
 function ajout_commentaire($description, $article_id, $user_id) {
