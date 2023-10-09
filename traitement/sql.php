@@ -34,15 +34,15 @@
 
   function get_articles_from_categories_and_titre_and_auteur($categories, $titre) {
     require "config.php";
-    $sql = "SELECT DISTINCT a.* FROM article a LEFT JOIN lien_categorie_article l ON a.id=l.id_article JOIN user u ON a.id_user = u.id WHERE LOWER(a.titre) LIKE '%".trim(strtolower($titre))."%'";
+    $sql = "SELECT DISTINCT a.* FROM (SELECT a.* FROM article a JOIN user u ON a.id_user=u.id WHERE LOWER(a.titre) LIKE '%".trim(strtolower($titre))."%' OR LOWER(u.pseudo) LIKE '%".trim(strtolower($titre))."%') a LEFT JOIN lien_categorie_article l ON a.id=l.id_article";
     for($i=0; $i<count($categories); $i++) {
       if($i==0) {
-        $sql .= " AND id_categorie=".$categories[$i];
+        $sql .= " WHERE id_categorie=".$categories[$i];
       } else {
         $sql .= " OR id_categorie=".$categories[$i];
       }
     }
-    $sql .= "OR LOWER(u.pseudo) LIKE '%".trim(strtolower($titre))."%' ORDER BY a.id DESC";
+    $sql .= " ORDER BY a.id DESC";
     $rows = $connexion->query($sql);
 
     if($rows) {
