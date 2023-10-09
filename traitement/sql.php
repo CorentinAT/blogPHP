@@ -32,9 +32,9 @@
     }
   }
 
-  function get_articles_from_categories_and_titre($categories, $titre) {
+  function get_articles_from_categories_and_titre_and_auteur($categories, $titre) {
     require "config.php";
-    $sql = "SELECT DISTINCT a.* FROM article a LEFT JOIN lien_categorie_article l ON a.id=l.id_article WHERE LOWER(a.titre) LIKE '%".trim(strtolower($titre))."%'";
+    $sql = "SELECT DISTINCT a.* FROM article a LEFT JOIN lien_categorie_article l ON a.id=l.id_article JOIN user u ON a.id_user = u.id WHERE LOWER(a.titre) LIKE '%".trim(strtolower($titre))."%'";
     for($i=0; $i<count($categories); $i++) {
       if($i==0) {
         $sql .= " AND id_categorie=".$categories[$i];
@@ -42,7 +42,7 @@
         $sql .= " OR id_categorie=".$categories[$i];
       }
     }
-    $sql .= " ORDER BY a.id DESC";
+    $sql .= "OR LOWER(u.pseudo) LIKE '%".trim(strtolower($titre))."%' ORDER BY a.id DESC";
     $rows = $connexion->query($sql);
 
     if($rows) {
