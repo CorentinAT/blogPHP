@@ -34,8 +34,8 @@ if($article === false) {
             if ($commentaires) {
                 foreach ($commentaires as $commentaire) {
                     echo "<div class='border-t mt-4 pt-4'>";
-                    echo "<p class='font-medium'>" . htmlspecialchars($commentaire['pseudo']) . "</p>";
-                    echo "<p class='text-sm'>" . htmlspecialchars($commentaire['description']) . "</p>";
+                    echo "<p class='font-medium'>" . $commentaire['pseudo'] != "" ? $commentaire['pseudo'] : $commentaire['email'] . "</p>";
+                    echo "<p class='text-sm'>" . $commentaire['description'] . "</p>";
                     echo "</div>";
                 }
             } else {
