@@ -11,6 +11,7 @@
   switch($_POST['form_name']) {
     case 'sup_commentaire':
         if(!empty($_POST['id_commentaire'])) {
+            delete_commentaire($_POST['id_commentaire']);
             if (!empty($_POST['id_article'])) {
                 header('Location: /pages/article.php?id=' . $_POST['id_article']);
                 exit(0);
