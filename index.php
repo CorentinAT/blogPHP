@@ -66,7 +66,7 @@
 
       if(isset($_SESSION['id_user'])) {
         if($_SESSION['is_admin']=="1" || $article['id_user']==$_SESSION['id_user']) {
-          echo "<form method='GET' action='./traitement/supprimer.php'><button type='submit' name='id' value='".$article['id']."' class='text-red-500 self-end hover:underline'>Supprimer</button></form>";
+          echo "<form method='POST' action='./traitement/traitement_forms.php'><input type='hidden' name='id' value='".$article['id']."'/><button type='submit' name='form_name' value='supprimerarticle_form' class='text-red-500 self-end hover:underline'>Supprimer</button></form>";
         }
       }
 

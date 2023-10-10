@@ -83,5 +83,12 @@
       }
       header('Location: /index.php');
       exit(0);
+    
+    case 'supprimerarticle_form':
+      if(isset($_POST['id']) && (get_article($_POST['id'])['id_user']==$_SESSION['id_user'] || $_SESSION['is_admin']==1)) {
+        delete_article_from_id($_POST['id']);
+      }
+      header("Location: /index.php");
+      exit(0);
   }
 ?>
