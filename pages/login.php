@@ -6,7 +6,7 @@
         <form method="post" lang="fr" title="login form" name="login_form" action="../traitement/auth.php" class="w-full">
             <div class="mb-4">
                 <label for="email" class="block text-sm md:text-base font-medium text-gray-600">Email:</label>
-                <input id="email" type="email" name="email" alt="mail utilisateur" required placeholder="exemple@domaine.com" class="mt-1 p-2 w-full border rounded-md">
+                <input autofocus id="email" type="email" name="email" alt="mail utilisateur" required placeholder="exemple@domaine.com" class="mt-1 p-2 w-full border rounded-md">
                 <?php
                 if(isset($_SESSION["error_mail"])){
                     echo "<p class='text-red-600'>". $_SESSION["error_mail"]. "</p>";
