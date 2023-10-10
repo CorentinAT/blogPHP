@@ -17,7 +17,7 @@ if($article === false) {
         </article>
 
         <!-- Section de commentaires -->
-        <div class="mt-12">
+        <div class="mt-12 mb-10">
             <h2 class="text-2xl font-semibold mb-4">Commentaires</h2>
             <?php
                 if (!empty($_SESSION["id_user"])){ ?>
@@ -54,7 +54,7 @@ if($article === false) {
                         }
                     }
                     echo "<p class='font-medium'>" . htmlspecialchars($commentaire['pseudo'] != "" ? $commentaire['pseudo'] : $commentaire['email']) . "</p>";
-                    echo "<p class='text-sm'>" . $commentaire['description'] . "</p>";
+                    echo "<p class='text-sm break-words'>" . nl2br($commentaire['description']) . "</p>";
                     echo "</div>";
                 }
             } else {
