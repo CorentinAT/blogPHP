@@ -96,3 +96,5 @@
     }
   ?>
 </div>
+
+<?php require("./structure/footer.php"); ?>
