@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 10 oct. 2023 à 15:56
+-- Généré le : mar. 10 oct. 2023 à 23:01
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -85,21 +85,16 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
   `id_user` int NOT NULL,
   `id_article` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Déchargement des données de la table `commentaire`
 --
 
 INSERT INTO `commentaire` (`id`, `description`, `id_user`, `id_article`) VALUES
-(1, 'super top', 2, 25),
-(2, 'j\'ai bien aimé quand il y avait aimé\r\n', 2, 25),
-(3, '', 2, 32),
-(4, 'léger bug\r\n', 2, 32),
-(5, 'super article ! au top', 12, 37),
-(6, 'commentiare\r\n', 9, 39),
-(7, 'fezfzefzef', 9, 46),
-(8, 'fezfzefze', 9, 46);
+(10, 'J\'ai rarement lu un article qui étale autant de vérité, félicitations !', 19, 55),
+(9, 'Complètement d\'accord !\r\nCe professeur est vraiment excellent (le meilleur ??) dans son domaine', 18, 55),
+(11, 'J\'ai eu peur en voyant le titre...\nHeureusement vous m\'avez encore régalé !', 20, 54);
 
 -- --------------------------------------------------------
 
@@ -182,15 +177,18 @@ CREATE TABLE IF NOT EXISTS `user` (
   `mdp` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `admin` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Déchargement des données de la table `user`
 --
 
 INSERT INTO `user` (`id`, `email`, `pseudo`, `mdp`, `admin`) VALUES
+(18, 'toto@localhost.fr', 'Marc', '31f7a65e315586ac198bd798b6629ce4903d0899476d5741a9f32e2e521b6a66', 0),
 (10, 'corentin@localhost.fr', 'Corentin', '4f682b71153ffa91e608445d7ea1257e2076d0d95eab6336cd1aa94b49680f11', 0),
 (9, 'admin@localhost.fr', 'Admin', '210151a65a14a22f3e3daf068d898bef2a9c88551c4a46ac42d8b93b94349c54', 1),
+(20, 'elouan@localhost.fr', 'Elouan', '7aeac0134ea941e94a2b3b48dd956fd1d187222f9a1880810ab460c4ecd87e41', 0),
+(19, 'astrid@localhost.fr', 'Astrid', '9c804f2550e31d8f98ac9b460cfe7fbfc676c5e4452a261a2899a1ea168c0a50', 0),
 (17, 'corentin_aime@localhost.fr', 'Corentin et Aimé', 'f4f263e439cf40925e6a412387a9472a6773c2580212a4fb50d224d3a817de17', 0),
 (16, 'aime@localhost.fr', 'Aimé', '2c22b54025700ef14dff1e050798fa1e981e359071b55672e5e6f70e5bcca181', 0);
 COMMIT;
