@@ -79,6 +79,7 @@ function get_article($id) {
 
 function get_user_by_email($email) {
     require "config.php";
+    $email = trim(strtolower($email));
     $sql = $connexion->prepare("SELECT * from user where email=? LIMIT 1");
     $sql->execute([$email]);
     $row = $sql->fetch(PDO::FETCH_ASSOC);
@@ -128,6 +129,7 @@ function get_categories_from_article($id_article) {
 
 function create_user($email, $hashed_password, $admin) {
     require "config.php";
+    $email = trim(strtolower($email));
     $sql = $connexion->prepare("INSERT INTO user (email, mdp, admin) VALUES (?, ?, ?)");
     $sql->execute([$email, $hashed_password, $admin]);
     return $connexion->lastInsertId();

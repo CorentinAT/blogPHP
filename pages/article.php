@@ -19,23 +19,32 @@ if($article === false) {
         <!-- Section de commentaires -->
         <div class="mt-12">
             <h2 class="text-2xl font-semibold mb-4">Commentaires</h2>
-            <form method="post" action="/traitement/traitement_forms.php" class="space-y-4">
-                <div>
-                    <label for="commentaire" class="block text-sm font-medium text-gray-600">Votre commentaire :</label>
-                    <textarea id="commentaire" name="commentaire" required rows="5" class="w-full p-2 border rounded-md resize-none"></textarea>
-                </div>
-                <div>
-                    <button  name="form_name" value="commentaire_form" type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Envoyer</button>
-                </div>
-            </form>
+            <?php
+                if (!empty($_SESSION["id_user"])){ ?>
+                    <form method="post" action="/traitement/traitement_forms.php" class="space-y-4">
+                        <div>
+                            <label for="commentaire" class="block text-sm font-medium text-gray-600">Votre commentaire :</label>
+                            <textarea id="commentaire" name="commentaire" required rows="5" class="w-full p-2 border rounded-md resize-none"></textarea>
+                        </div>
+                        <div>
+                            <button  name="form_name" value="commentaire_form" type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Envoyer</button>
+                        </div>
+                    </form> <?php
+                } else {
+                    ?>
+                        <h2 class="text-red-500">Veuillez vous connecter pour commenter</h2>
+                    <?php
+                }
+            ?>
+
             <!-- Afficher les commentaires ici -->
             <?php
             $commentaires = get_commentaires_article($articleId);
             if ($commentaires) {
                 foreach ($commentaires as $commentaire) {
                     echo "<div class='border-t mt-4 pt-4'>";
-                    echo "<p class='font-medium'>" . htmlspecialchars($commentaire['pseudo']) . "</p>";
-                    echo "<p class='text-sm'>" . htmlspecialchars($commentaire['description']) . "</p>";
+                    echo "<p class='font-medium'>" . htmlspecialchars($commentaire['pseudo'] != "" ? $commentaire['pseudo'] : $commentaire['email']) . "</p>";
+                    echo "<p class='text-sm'>" . $commentaire['description'] . "</p>";
                     echo "</div>";
                 }
             } else {
