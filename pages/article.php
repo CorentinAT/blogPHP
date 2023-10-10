@@ -11,7 +11,7 @@ if($article === false) {
             <h1 class="text-4xl font-semibold mb-4">
                 <?php echo $article['titre'] ?>
             </h1>
-            <div aria-label="contenu article" class="text-lg leading-relaxed">
+            <div aria-label="contenu article" class="text-lg leading-relaxed break-words">
                 <?php echo nl2br($article['description']) ?>
             </div>
         </article>
