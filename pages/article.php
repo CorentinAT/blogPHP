@@ -43,6 +43,16 @@ if($article === false) {
             if ($commentaires) {
                 foreach ($commentaires as $commentaire) {
                     echo "<div class='border-t mt-4 pt-4'>";
+                    if(isset($_SESSION['id_user'])) {
+                        if($commentaire['id_user']==$_SESSION['id_user']) {
+                            echo "<form method='POST' action='/traitement/traitement_forms.php'>
+                                <input class='hidden' type='number' name='id_article' value='".$article['id']."'>
+                                <input class='hidden' type='number' name='id_commentaire' value='".$commentaire['commentaire_id']."'>
+
+                                <button type='submit' name='form_name' value='sup_commentaire' class='text-red-500 self-end hover:underline'>Supprimer</button>
+                                </form>";
+                        }
+                    }
                     echo "<p class='font-medium'>" . htmlspecialchars($commentaire['pseudo'] != "" ? $commentaire['pseudo'] : $commentaire['email']) . "</p>";
                     echo "<p class='text-sm'>" . $commentaire['description'] . "</p>";
                     echo "</div>";

@@ -149,10 +149,18 @@ function ajout_commentaire($description, $article_id, $user_id) {
     return $connexion->lastInsertId();
 }
 
+function delete_commentaire($commentaire_id) {
+    require "config.php";
+    $sql = $connexion->prepare("DELETE FROM commentaire WHERE id = ?");
+    $sql->execute([$commentaire_id]);
+    return $sql->rowCount() == 1;
+}
+
+
 function get_commentaires_article($id_article) {
     require "config.php";
 
-    $sql = "SELECT * FROM commentaire 
+    $sql = "SELECT *, commentaire.id as commentaire_id, user.id as commentaire_user_id FROM commentaire 
             JOIN user ON commentaire.id_user = user.id 
             WHERE commentaire.id_article = ?
             ORDER BY commentaire.id desc";
