@@ -149,6 +149,14 @@ function ajout_commentaire($description, $article_id, $user_id) {
     return $connexion->lastInsertId();
 }
 
+function delete_commentaire($commentaire_id) {
+    require "config.php";
+    $sql = $connexion->prepare("DELETE FROM commentaire WHERE id = ?");
+    $sql->execute([$comment_id]);
+    return $sql->rowCount() == 1;
+}
+
+
 function get_commentaires_article($id_article) {
     require "config.php";
 
