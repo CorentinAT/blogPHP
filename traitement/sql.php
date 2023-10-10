@@ -32,9 +32,9 @@
     }
   }
 
-  function get_articles_from_categories_and_titre_and_auteur($categories, $titre) {
+  function get_articles_from_categories_and_titre_and_auteur($categories, $recherche) {
     require "config.php";
-    $sql = "SELECT DISTINCT a.* FROM (SELECT a.* FROM article a JOIN user u ON a.id_user=u.id WHERE LOWER(a.titre) LIKE '%".trim(strtolower($titre))."%' OR LOWER(u.pseudo) LIKE '%".trim(strtolower($titre))."%') a LEFT JOIN lien_categorie_article l ON a.id=l.id_article";
+    $sql = "SELECT DISTINCT a.* FROM (SELECT a.* FROM article a JOIN user u ON a.id_user=u.id WHERE LOWER(a.titre) LIKE '%".trim(strtolower($recherche))."%' OR LOWER(u.pseudo) LIKE '%".trim(strtolower($titre))."%') a LEFT JOIN lien_categorie_article l ON a.id=l.id_article";
     for($i=0; $i<count($categories); $i++) {
       if($i==0) {
         $sql .= " WHERE id_categorie=".$categories[$i];

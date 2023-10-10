@@ -40,7 +40,7 @@
             $titre = "";
           }
         ?>
-        <input type="text" name="titre" class="border w-full rounded h-fit p-2 self-center" placeholder="Auteur, titre" value="<?php echo $titre ?>"/>
+        <input type="text" name="recherche" class="border w-full rounded h-fit p-2 self-center" placeholder="Auteur, titre" value="<?php echo $titre ?>"/>
         <button type="submit" class="border h-fit p-2 self-center rounded">Trier</button>
       </div>
     </form>
@@ -48,7 +48,7 @@
 
   <?php
     if(isset($_GET['categories']) && isset($_GET['titre'])) {
-      $articles = get_articles_from_categories_and_titre_and_auteur($_GET['categories'], $_GET['titre']);
+      $articles = get_articles_from_categories_and_titre_and_auteur($_GET['categories'], $_GET['recherche']);
     } else if(isset($_GET['categories'])) {
       $articles = get_articles_from_categories_and_titre_and_auteur($_GET['categories'], "");
     } else if(isset($_GET['titre'])) {
