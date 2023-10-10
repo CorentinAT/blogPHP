@@ -37,8 +37,7 @@
             header("Location: /index.php");
             exit(0);
         } else {
-            $_SESSION["error_pseudo"] = "Pseudo nécessaire";
-            header("Location: /pages/pseudo.php");
+            header("Location: /index.php");
             exit(0);
         }
 
