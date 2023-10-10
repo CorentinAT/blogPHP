@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 10 oct. 2023 à 15:52
+-- Généré le : mar. 10 oct. 2023 à 15:56
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -82,7 +82,6 @@ DROP TABLE IF EXISTS `commentaire`;
 CREATE TABLE IF NOT EXISTS `commentaire` (
   `id` int NOT NULL AUTO_INCREMENT,
   `description` text COLLATE utf8mb4_bin NOT NULL,
-  `article` text COLLATE utf8mb4_bin NOT NULL,
   `id_user` int NOT NULL,
   `id_article` int NOT NULL,
   PRIMARY KEY (`id`)
@@ -92,15 +91,15 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
 -- Déchargement des données de la table `commentaire`
 --
 
-INSERT INTO `commentaire` (`id`, `description`, `article`, `id_user`, `id_article`) VALUES
-(1, 'super top', '', 2, 25),
-(2, 'j\'ai bien aimé quand il y avait aimé\r\n', '', 2, 25),
-(3, '', '', 2, 32),
-(4, 'léger bug\r\n', '', 2, 32),
-(5, 'super article ! au top', '', 12, 37),
-(6, 'commentiare\r\n', '', 9, 39),
-(7, 'fezfzefzef', '', 9, 46),
-(8, 'fezfzefze', '', 9, 46);
+INSERT INTO `commentaire` (`id`, `description`, `id_user`, `id_article`) VALUES
+(1, 'super top', 2, 25),
+(2, 'j\'ai bien aimé quand il y avait aimé\r\n', 2, 25),
+(3, '', 2, 32),
+(4, 'léger bug\r\n', 2, 32),
+(5, 'super article ! au top', 12, 37),
+(6, 'commentiare\r\n', 9, 39),
+(7, 'fezfzefzef', 9, 46),
+(8, 'fezfzefze', 9, 46);
 
 -- --------------------------------------------------------
 
