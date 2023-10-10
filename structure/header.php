@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="h-screen">
-  <div class="w-screen flex justify-between bg-gray-100 py-2 px-4 items-center mb-4 fixed">
+  <div class="w-screen flex justify-between bg-gray-100 py-2 px-4 items-center mb-4">
     <a href="/index.php"><h1 class="text-2xl"><\?php BLOG?></h1></a>
     <div class="flex gap-4">
       <a href="/pages/creer_article.php" class="text-blue-500 hover:underline">Nouvel article</a>

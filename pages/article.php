@@ -6,13 +6,13 @@ if($article === false) {
     header('Location: /pages/article_existe_pas.php');
 } else {
     ?>
-    <div class="container mx-auto px-4 mt-12">
+    <div class="container mx-auto px-4">
         <article title="<?php echo $article['titre'] ?>" class="prose prose-lg mx-auto">
             <h1 class="text-4xl font-semibold mb-4">
                 <?php echo $article['titre'] ?>
             </h1>
             <div aria-label="contenu article" class="text-lg leading-relaxed">
-                <?php echo $article['description'] ?>
+                <?php echo nl2br($article['description']) ?>
             </div>
         </article>
 
