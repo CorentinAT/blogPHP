@@ -9,6 +9,17 @@
   }
 
   switch($_POST['form_name']) {
+    case 'sup_commentaire':
+        if(!empty($_POST['id_commentaire'])) {
+            if (!empty($_POST['id_article'])) {
+                header('Location: /pages/article.php?id=' . $_POST['id_article']);
+                exit(0);
+            } else {
+                header('Location: /index.php');
+                exit(0);
+            }
+
+        }
     case 'nvarticle':
 
       if(!empty($_POST['titre']) && !empty($_POST['description']) && isset($_SESSION['id_user'])) {
