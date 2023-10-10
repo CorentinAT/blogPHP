@@ -5,46 +5,48 @@
 
 <div class="flex flex-col gap-3 items-center">
   <div class="w-8/12">
-    <form class="flex justify-between gap-2" method="GET">
-      
-      <fieldset id="categories" class="flex flex-wrap gap-3">
-        <?php
-          $categories = get_categories();
-          if($categories!==false) {
-            foreach($categories as $categorie) {
-              if(isset($_GET['categories']) && in_array($categorie['id'], $_GET['categories'])) {
-                $checked = "checked";
-              } else {
-                $checked = "";
-              }
-              echo "<input type='checkbox' name='categories[]' value='". $categorie['id'] ."' id='". $categorie['nom'] ."' class='hidden' ".$checked."/>
-              <label for='". $categorie['nom'] ."' class='border rounded-2xl p-2 select-none transition-all duration-200 flex justify-center items-center hover:bg-blue-100 hover:cursor-pointer'>". $categorie['nom'] ."</label>";
-            }
-          } else {
-            echo "<p class='text-red-500'>Erreur dans le chargement des catégories</p>";
-          }
-        ?>
-      </fieldset>
-      <style>
-        #categories input:checked + label {
-          background-color: rgb(59 130 246);
-          color: white;
-        }
-      </style>
+    <form class="flex justify-between gap-2" method="GET" role="search" aria-label="formulaire de recherche">
 
-      <div class="flex justify-end gap-2 w-1/2">
-        <?php
-          if(isset($_GET['titre'])) {
-            $titre = $_GET['titre'];
-          } else {
-            $titre = "";
-          }
-        ?>
-        <input type="text" name="recherche" class="border w-full rounded h-fit p-2 self-center" placeholder="Auteur, titre" value="<?php echo $titre ?>"/>
-        <button type="submit" class="border h-fit p-2 self-center rounded">Trier</button>
-      </div>
+        <fieldset id="categories" class="flex flex-wrap gap-3" aria-labelledby="category-label">
+            <legend id="category-label">Categories</legend>
+            <?php
+            $categories = get_categories();
+            if($categories!==false) {
+                foreach($categories as $categorie) {
+                    if(isset($_GET['categories']) && in_array($categorie['id'], $_GET['categories'])) {
+                        $checked = "checked";
+                    } else {
+                        $checked = "";
+                    }
+                    echo "<input type='checkbox' name='categories[]' value='". $categorie['id'] ."' id='". $categorie['nom'] ."' class='hidden' ".$checked." aria-labelledby='category-label'/>
+          <label for='". $categorie['nom'] ."' class='border rounded-2xl p-2 select-none transition-all duration-200 flex justify-center items-center hover:bg-blue-100 hover:cursor-pointer'>". $categorie['nom'] ."</label>";
+                }
+            } else {
+                echo "<p class='text-red-500'>Erreur dans le chargement des catégories</p>";
+            }
+            ?>
+        </fieldset>
+
+        <style>
+            #categories input:checked + label {
+                background-color: rgb(59 130 246);
+                color: white;
+            }
+        </style>
+
+        <div class="flex justify-end gap-2 w-1/2">
+            <?php
+            if(isset($_GET['titre'])) {
+                $titre = $_GET['titre'];
+            } else {
+                $titre = "";
+            }
+            ?>
+            <input type="text" name="recherche" class="border w-full rounded h-fit p-2 self-center" placeholder="Auteur, titre" value="<?php echo $titre ?>" aria-label="Recherche par auteur, titre, contenu..."/>
+            <button type="submit" class="border h-fit p-2 self-center rounded" aria-label="Submit button">Trier</button>
+        </div>
     </form>
-  </div>
+</div>
 
   <?php
     if(isset($_GET['categories']) && isset($_GET['titre'])) {
