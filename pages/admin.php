@@ -15,7 +15,7 @@
         <form method="post" lang="fr" title="categorie form" name="categorie_form" action="../traitement/traitement_forms.php" class="w-full">
             <div class="mb-4">
                 <label for="categorie" class="block text-sm md:text-base font-medium text-gray-600">Nom de la catégorie :</label>
-                <input id="categorie" type="text" name="categorie" alt="nom categorie" required placeholder="PHP" class="mt-1 p-2 w-full border rounded-md">
+                <input id="categorie" type="text" name="categorie" alt="nom categorie" required placeholder="PHP" class="mt-1 p-2 w-full border rounded-md" autofocus>
                 <?php
                 if(isset($_SESSION["error_pseudo"])){
                     echo "<p class='text-red-600'>". $_SESSION["error_pseudo"]. "</p>";
