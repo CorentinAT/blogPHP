@@ -94,6 +94,6 @@ Pour configurer le site, il faut configurer son serveur (WAMP/LAMP...) sur le po
 
 Il faut créer une base de données MySQL, avec comme nom `blog`.
 
-Il faut ensuite importer dans cette base le fichier blog.sql, qui est dans le répertoire db.
+Il faut ensuite importer dans cette base le fichier **blog.sql**, qui est dans le répertoire db.
 
 Vérifier que les tables de la base sont encodées en `utf8mb4_bin`, l'import des tables devrait le faire automatiquement.
