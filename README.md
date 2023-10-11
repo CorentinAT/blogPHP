@@ -1,6 +1,5 @@
 # BLOG PHP - Tp noté
 ## Table des Matières
-## Table des Matières
 
 1. [Intro / Contexte](#intro--contexte)
 2. [Présentation rapide de la Base de Données](#présentation-rapide-de-la-base-de-données)
