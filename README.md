@@ -41,7 +41,7 @@ Nous avons utilisé une base de données MySQL qui comprend les tables suivantes
 * Commentaire : Contient les commentaires publiés, avec l'information de l'article auquel il correspond
 
 ## Présentation du code
-Nous avons rendu notre code accessible et lisible en divisant au maximum ses fichiers et ses fonctions.
+Nous avons rendu notre code accessible et lisible en divisant au maximum ses fichiers et ses fonctions en tentant d'implémenter une architecture **MVC** (Model View Controller) 
 
 ### Découpage
 Après le fichier **index.html**, qui est la page d'accueil, nous avons divisé le code en 3 répertoires :
