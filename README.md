@@ -33,7 +33,7 @@ Nous avons utilisé une base de données MySQL qui comprend les tables suivantes
 
 ![Base de donée](./BD.png)
 
-* User: Stocke les informations des utilisateurs
+* User: Stocke les informations des utilisateurs dont le mot de passe hashé
 * Article : Contient les articles publiés
 * Categories : Pour les différentes catégories d'articles
 * Lien_categorie_article : Lie chaque article à ses catégories attribuées (s'il en a)
@@ -43,18 +43,21 @@ Nous avons utilisé une base de données MySQL qui comprend les tables suivantes
 Nous avons rendu notre code accessible et lisible en divisant au maximum ses fichiers et ses fonctions en tentant d'implémenter une architecture **MVC** (Model View Controller) 
 
 ### Découpage
-Après le fichier **index.html**, qui est la page d'accueil, nous avons divisé le code en 3 répertoires :
+Après le fichier **index.php**, qui est la page d'accueil, nous avons divisé le code en 3 répertoires (MVC) :
 * Pages : Les différentes pages du site, qui sont visibles et navigables par l'utilisateur. Ses fichiers contiennent du code HTML en plus du PHP.
 * Structure : Le header et le footer du site, qui sont intégrés à chaque page.
 * Traitement : Les fonctions du site qui sont appelées par les pages pour effectuer des tâches non visibles par l'utilisateur.
 
+
+* _DB : Dump de notre BD avec les données._
+
 Dans le dossier **traitement**, on trouve plusieurs fichiers qui correspondent à différentes fonctionnalités :
-* **auth.php** : Gère la connexion au site et la création de compte.
-* **config.php** : Connecte la base de données, le fichier est inclus dans toutes les pages / fonctions qui ont un lien avec la base de données.
-* **deconnexion.php** : Déconnecte l'utilisateur en détruisant sa session.
-* **require_auth.php** : Regarde si l'utilisateur est connecté, et le renvoie sur la page d'accueil si ce n'est pas le cas. On utilise ce fichier au début de toutes les pages pours lesquelles il faut être connecté.
-* **sql.php** : Contient toutes les fonctions qui interargissent directement avec la base de données en lui effectuant des requêtes SQL.
-* **traitement_forms.php** : Reçoit les formulaires envoyés depuis tout le site et contient les traitement à faire en fonction de ces demandes.
+* [**auth.php**](./traitement/auth.php) : Gère la connexion au site et la création de compte.
+* [**config.php**](./traitement/config.php) : Connecte la base de données, le fichier est inclus dans toutes les pages / fonctions qui ont un lien avec la base de données.
+* [**deconnexion.php**](./traitement/deconnexion.php) : Déconnecte l'utilisateur en détruisant sa session.
+* [**require_auth.php**](./traitement/require_auth.php) : Regarde si l'utilisateur est connecté, et le renvoie sur la page d'accueil si ce n'est pas le cas. On utilise ce fichier au début de toutes les pages pours lesquelles il faut être connecté.
+* [**sql.php**](./db/blog.sql) : Contient toutes les fonctions qui interargissent directement avec la base de données en lui effectuant des requêtes SQL.
+* [**traitement_forms.php**](./traitement/traitement_forms.php) : Reçoit les formulaires envoyés depuis tout le site et contient les traitement à faire en fonction de ces demandes.
 
 ### Fonctions
 Les fonctions principales sont dans le fichier **sql.php**.
