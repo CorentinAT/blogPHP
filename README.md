@@ -83,3 +83,4 @@ Dans le cas où nous continuons de développer le site, nous aimerions faire les
 * Personnalisation plus poussée du profil.
 * Pouvoir s'abonner un auteur d'articles.
 * Pouvoir rédiger ses articles en MarkDown et qu'ils s'affichent proprement.
+* La possibilité de modifier un article qu'on a écrit.
