@@ -8,7 +8,7 @@
     <form class="flex justify-between gap-2" method="GET" role="search" aria-label="formulaire de recherche">
 
         <fieldset id="categories" class="flex flex-wrap gap-3" aria-labelledby="category-label">
-            <legend id="category-label">Categories</legend>
+            <legend class="hidden" id="category-label">Categories</legend>
             <?php
             $categories = get_categories();
             if($categories!==false) {
