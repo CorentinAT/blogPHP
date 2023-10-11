@@ -36,8 +36,8 @@
 
         <div class="flex justify-end gap-2 w-1/2">
             <?php
-            if(isset($_GET['titre'])) {
-                $titre = $_GET['titre'];
+            if(isset($_GET['recherche'])) {
+                $titre = $_GET['recherche'];
             } else {
                 $titre = "";
             }
