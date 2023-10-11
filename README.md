@@ -7,6 +7,7 @@
     - [Découpage](#découpage)
     - [Fonctions](#fonctions)
 3. [Améliorations possibles](#améliorations-possibles)
+4. [Installation](#installation)
 
 ## Intro / Contexte
 Le projet vise à créer une application web de type "Blog". Ce projet comprend plusieurs fonctionnalités comme la connexion utilisateur, la liste et création d'articles, la gestion des catégories, etc.
@@ -87,3 +88,12 @@ Dans le cas où nous continuons de développer le site, nous aimerions faire les
 * Pouvoir s'abonner un auteur d'articles.
 * Pouvoir rédiger ses articles en MarkDown et qu'ils s'affichent proprement.
 * La possibilité de modifier un article qu'on a écrit.
+
+## Installation
+Pour configurer le site, il faut configurer son serveur (WAMP/LAMP...) sur le port 80 (par défaut).
+
+Il faut créer une base de données MySQL, avec comme nom `blog`.
+
+Il faut ensuite importer dans cette base le fichier blog.sql, qui est dans le répertoire db.
+
+Vérifier que les tables de la base sont encodées en `utf8mb4_bin`, l'import des tables devrait le faire automatiquement.
