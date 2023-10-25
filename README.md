@@ -1,6 +1,6 @@
 # BLOG PHP - Tp noté
 
-blogphp.super-sympa.fr
+https://blogphp.super-sympa.fr
 
 ## Table des Matières
 
